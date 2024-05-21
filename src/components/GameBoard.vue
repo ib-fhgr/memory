@@ -1,39 +1,39 @@
 <template>
   <div class="game-board">
-    
-    <!-- TODO: Für jede Karte in der Eigenschaft "cards" soll ein Card-Component gerendert werden 
-         und die Eigenschaften der Karte an das Card-Component übergeben werden. 
-
-        Wenn die Karte angeklickt wird, soll die Methode "flippCard" aufgerufen werden und die Karte als Argument übergeben werden.
-
-        Das Layout soll so sein, dass die Karten in einer 5x5 Grid angeordnet sind - Tipp, dies kann man per CSS umsetzen.      
-    -->
-  
+    <!-- Rendering each card as a Card component and passing properties -->
+    <Card
+      v-for="card in cards"
+      :card="card"
+      @click="flippCard(card)"
+    />
   </div>
 </template>
 
 <script>
 import Card from './Card.vue'
 
-export default {  
+export default {
   components: {
-    /* TODO: Kartenkomponente hinzufügen */
+    Card
   },
   props: {
-    /* TODO: Definieren Sie eine Eigenschaft "cards" */
+    cards: {
+      type: Array,
+      required: true
+    }
   },
   methods: {
     flippCard(card) {
-      // sendet ein Event "flippCard" mit der Karte als Argument an die Elternkomponente
       this.$emit('flippCard', card);
     }
-  },
-  
+  }
 };
 </script>
 
 <style>
-
-/* TODO: Definieren Sie die Styles für das Spielfeld, Tipp: CSS-Grid */
-
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px; /* Adjust as needed for spacing between cards */
+}
 </style>

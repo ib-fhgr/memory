@@ -37,6 +37,8 @@ export default {
     // erzeugt 20 Kartenobjekte
     let cardTitles = ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H', 'I', 'I', 'J', 'J'];
 
+    cardTitles = shuffleArray(cardTitles)
+
     for (let title of cardTitles) {
       this.cards.push({
         title: title,
@@ -45,16 +47,16 @@ export default {
       })
     }
 
-    // TODO: Karten mischen
+    // Karten mischen
     function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array
+      for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array
     }
 
-   console.log(shuffleArray(cardTitles))
+   
 
   },
   methods: {
@@ -63,13 +65,13 @@ export default {
       if (card.matched || card.flipped || this.flippedCards.length==2) return;
 
       if (this.flippedCards.length < 2 && card.matched == false) {
-        // TODO: Karte aufdecken
+        // Karte aufdecken
         card.flipped = true
         this.flippedCards.push(card)
       }
 
       if (this.flippedCards.length === 2) {
-        // TODO: Wenn nach dem Aufdecken 2 Karten aufgedeckt sind, prüfen ob diese identisch sind
+        // Wenn nach dem Aufdecken 2 Karten aufgedeckt sind, prüfen ob diese identisch sind
         let [card1, card2] =this.flippedCards
         if (card1.title === card2.title) {
           card1.matched = true
@@ -78,7 +80,7 @@ export default {
           this.scores[player]++
           this.flippedCards = []
         } else {
-          setTimeout(function() {
+          setTimeout(() => {
             card1.flipped = false
             card2.flipped = false
             this.flippedCards = []
@@ -89,14 +91,6 @@ export default {
             }
           }, 2000);
         }
-
-
-        // Falls ja, Punkte vergeben und Karten aufgedeckt lassen
-
-        // Fralls nein:
-        // - 2 Sekunden waten
-        // - Karten wieder umdrehen
-        // - Spieler wechseln
       }
     }
   }
