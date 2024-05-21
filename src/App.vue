@@ -15,6 +15,8 @@
 import ScoreBoard from './components/ScoreBoard.vue'
 import GameBoard from './components/GameBoard.vue'
 
+
+
 export default {
   components: {
     ScoreBoard,
@@ -44,6 +46,16 @@ export default {
     }
 
     // TODO: Karten mischen
+    function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array
+    }
+
+   console.log(shuffleArray(cardTitles))
+
   },
   methods: {
     flippCard(card) {
@@ -52,15 +64,37 @@ export default {
 
       if (this.flippedCards.length < 2 && card.matched == false) {
         // TODO: Karte aufdecken
+        card.flipped = true
+        this.flippedCards.push(card)
       }
 
       if (this.flippedCards.length === 2) {
         // TODO: Wenn nach dem Aufdecken 2 Karten aufgedeckt sind, prüfen ob diese identisch sind
+        let [card1, card2] =this.flippedCards
+        if (card1.title === card2.title) {
+          card1.matched = true
+          card2.matched = true
+          let player = this.currentPlayer
+          this.scores[player]++
+          this.flippedCards = []
+        } else {
+          setTimeout(function() {
+            card1.flipped = false
+            card2.flipped = false
+            this.flippedCards = []
+            if (this.currentPlayer === "player1") {
+              this.currentPlayer = "player2"
+            } else {
+              this.currentPlayer = "player1"
+            }
+          }, 2000);
+        }
+
 
         // Falls ja, Punkte vergeben und Karten aufgedeckt lassen
 
-        // Falls nein:
-        // - 2 Sekunden warten
+        // Fralls nein:
+        // - 2 Sekunden waten
         // - Karten wieder umdrehen
         // - Spieler wechseln
       }
