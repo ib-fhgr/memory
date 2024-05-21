@@ -1,24 +1,45 @@
 <template>
   <div class="score-board">
-    <!-- TODO: Zeigen Sie die Punkte der Spieler an, und welcher Spieler gerade dran ist -->
+    <p id="player1">Spieler 1: {{ scores.player1 }}</p>
+    <p id="player2">Spieler 2: {{ scores.player2 }}</p>
+    <p id="player1" v-if="currentPlayer == 'player1'"><strong>Spieler 1 ist am Zug</strong></p>
+    <p id="player2" v-if="currentPlayer == 'player2'"><strong>Spieler 2 ist am Zug</strong></p>
   </div>
 </template>
 
 <script>
-
 export default {
   props: {
-    // TODO: definieren Sie geeignete Props
-  },
-  methods: {
-    // TODO: definieren Sie geeignete Methoden, falls nötig
+    scores: {
+      type: Object,
+      required: true
+    },
+    currentPlayer: {
+      type: String,
+      required: true
+    }
   }
 };
-
 </script>
 
-<style>
-  
-/* TODO: Definieren Sie die Styles für das Scoreboard, falls nötig */
+<style scoped>
+.score-board {
+  text-align: center;
+  font-size: 1.2em;
+  margin: 10px;
+  font-family: Helvetica;
+  border-width: 2pt;
+  border-style: solid;
+  border-color: black;
+}
+
+#player1 {
+  color: red
+}
+
+#player2 {
+  color: rgb(24, 47, 194)
+}
+
 
 </style>
