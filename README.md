@@ -7,6 +7,15 @@ In diesem Projekt soll in 4 Gruppen ein Memory-Spiel entwickelt werden. Die Grup
 - Gruppe 3: Spielfeld darstellen (GameBoard.vue)
 - Gruppe 4: Punkteansicht (SCoreBoard.vue)
 
+# Installation
+
+- erstellen Sie zunächst einen Fork dieses Repositories
+- klonen Sie das Repository von Ihrem Fork auf Ihrem Rechner
+- führen Sie den Befehl `npm install` im Projektverzeichnis aus
+- zum Starten des Text-Servers: `npm run dev`
+- lösen Sie als Team Ihre Aufgabe
+- committen und pushen Sie Ihre Änderungen und senden Sie mir einen Pull-Request
+
 ## Gruppe 1: Karten-Design (Card.vue)
 
 Hier geht es um die Darstellung einer einzelnen Karte - dabei soll die Vorder- oder Rückseite abhängig von der Eigenschaft "flipped" angezeigt werden. Bonus: Animation beim Umdrehen der Karte.
@@ -24,11 +33,5 @@ Hier geht es um die Darstellung des Spielfelds. Die Karten sollen in einem Raste
 Hier geht es um die Anzeige der Punkte, ausserdem soll angezeigt werden, welcher Spieler am Zug ist.
 
 
-# Installation
 
-- erstellen Sie zunächst einen Fork dieses Repositories
-- klonen Sie das Repository von Ihrem Fork auf Ihrem Rechner
-- führen Sie den Befehl `npm install` im Projektverzeichnis aus
-- lösen Sie als Team Ihre Aufgabe
-- committen und pushen Sie Ihre Änderungen und senden Sie mir einen Pull-Request
 
